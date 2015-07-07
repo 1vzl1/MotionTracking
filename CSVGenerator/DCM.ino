@@ -113,15 +113,21 @@ void Matrix_update(void)
   Gyro_Vector[1]=Gyro_Scaled_Y(gyro_y); //gyro y pitch
   Gyro_Vector[2]=Gyro_Scaled_Z(gyro_z); //gyro Z yaw
   
+  //Victor: setting accel_check to previous acceleration values for comparison
+  Accel_Prev[0] = Accel_Vector[0];
+  Accel_Prev[1] = Accel_Vector[1];
+  Accel_Prev[2] = Accel_Vector[2];
+  
   Accel_Vector[0]=accel_x;
   Accel_Vector[1]=accel_y;
   Accel_Vector[2]=accel_z;
     
   //Victor: Update displacement vector
+  displacementCalc();
   Dis_Vector[0]=dis_x;
   Dis_Vector[1]=dis_y;
-  Dis_Vector[2]=dis_z;    
-  
+  Dis_Vector[2]=dis_z;
+
   Vector_Add(&Omega[0], &Gyro_Vector[0], &Omega_I[0]);  //adding proportional term
   Vector_Add(&Omega_Vector[0], &Omega[0], &Omega_P[0]); //adding Integrator term
 

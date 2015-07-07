@@ -51,7 +51,7 @@ int SENSOR_SIGN[9] = {1,1,1,-1,-1,-1,1,1,1}; //Correct directions x,y,z - gyro, 
 // LSM303 accelerometer: 8 g sensitivity
 // 3.9 mg/digit; 1 g = 256
 #define GRAVITY 256  //this equivalent to 1G in the raw data coming from the accelerometer 
-
+#define SAMPLING_PERIOD 0.02
 #define ToRad(x) ((x)*0.01745329252)  // *pi/180
 #define ToDeg(x) ((x)*57.2957795131)  // *180/pi
 
@@ -90,6 +90,7 @@ int SENSOR_SIGN[9] = {1,1,1,-1,-1,-1,1,1,1}; //Correct directions x,y,z - gyro, 
 #define STATUS_LED 13 
 
 int timeCounter;
+float time;
 
 float G_Dt=0.02;    // Integration time (DCM algorithm)  We will run the integration loop at 50Hz if possible
 
@@ -113,12 +114,15 @@ float c_magnetom_y;
 float c_magnetom_z;
 float MAG_Heading;
 //Victor: added displacement variables
-float x_dis;
-float y_dis;
-float z_dis;
+float dis_x;
+float dis_y;
+float dis_z;
 
-//Victor: added displacement vector
+//Victor: added displacement, velocity, and new velocity vectors
 float Dis_Vector[3]= {0,0,0};//Store the displacement in a vector
+float Vel_Vector[3] = {0,0,0}; // Store the velocity in a vector
+float New_Vel_Vector[3] = {0,0,0}; // Store final velocity in a vector
+float Accel_Prev[3] = {0,0,0}; // Store previous acceleration values to account for drift
 float Accel_Vector[3]= {0,0,0}; //Store the acceleration in a vector
 float Gyro_Vector[3]= {0,0,0};//Store the gyros turn rate in a vector
 float Omega_Vector[3]= {0,0,0}; //Corrected Gyro_Vector data
@@ -232,7 +236,7 @@ void loop() //Main Loop
     Drift_correction();
     Euler_angles();
     // ***
-
+    time = timeCounter*0.02;
     printDataToFile();
     timeCounter++;
   }

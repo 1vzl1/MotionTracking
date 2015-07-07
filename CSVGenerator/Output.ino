@@ -88,11 +88,25 @@ void printDataToFile() {
      Serial.print("VALUE:");
       Serial.print(timeCounter);
       Serial.print(",");
-      Serial.print(ToDeg(roll));
+      Serial.print(time);
+      Serial.print(",");
+      /*Serial.print(ToDeg(roll));
       Serial.print(",");
       Serial.print(ToDeg(pitch));
       Serial.print(",");
-      Serial.println(ToDeg(yaw));
+      Serial.print(ToDeg(yaw));
+      Serial.print(",");*/
+      Serial.print(Accel_Vector[0]);
+      Serial.print(",");
+      Serial.print(Accel_Vector[1]);
+      Serial.print(",");
+      Serial.print(Accel_Vector[2]);
+      Serial.print(",");
+      Serial.print(Dis_Vector[0]);
+      Serial.print(",");
+      Serial.print(Dis_Vector[1]);
+      Serial.print(",");
+      Serial.println(Dis_Vector[2]);
 }
 
 long convert_to_dec(float x)
