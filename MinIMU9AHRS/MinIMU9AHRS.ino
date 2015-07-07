@@ -113,16 +113,20 @@ float c_magnetom_x;
 float c_magnetom_y;
 float c_magnetom_z;
 float MAG_Heading;
+//Victor: added displacement variables
 float x_dis;
 float y_dis;
 float z_dis;
 
+//Victor: added displacement vector
+float Dis_Vector[3]= {0,0,0};//Store the displacement in a vector
 float Accel_Vector[3]= {0,0,0}; //Store the acceleration in a vector
 float Gyro_Vector[3]= {0,0,0};//Store the gyros turn rate in a vector
 float Omega_Vector[3]= {0,0,0}; //Corrected Gyro_Vector data
 float Omega_P[3]= {0,0,0};//Omega Proportional correction
 float Omega_I[3]= {0,0,0};//Omega Integrator
 float Omega[3]= {0,0,0};
+
 
 // Euler angles
 float roll;
@@ -177,6 +181,7 @@ void setup()
     {
     Read_Gyro();
     Read_Accel();
+    Calc_Dis(); //Victor: calculating displacement
     for(int y=0; y<6; y++)   // Cumulate values
       AN_OFFSET[y] += AN[y];
     delay(20);
