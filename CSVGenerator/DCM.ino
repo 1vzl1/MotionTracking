@@ -117,6 +117,11 @@ void Matrix_update(void)
   Accel_Vector[1]=accel_y;
   Accel_Vector[2]=accel_z;
     
+  //Victor: Update displacement vector
+  Dis_Vector[0]=dis_x;
+  Dis_Vector[1]=dis_y;
+  Dis_Vector[2]=dis_z;    
+  
   Vector_Add(&Omega[0], &Gyro_Vector[0], &Omega_I[0]);  //adding proportional term
   Vector_Add(&Omega_Vector[0], &Omega[0], &Omega_P[0]); //adding Integrator term
 

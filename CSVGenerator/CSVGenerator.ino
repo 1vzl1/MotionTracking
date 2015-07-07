@@ -112,7 +112,13 @@ float c_magnetom_x;
 float c_magnetom_y;
 float c_magnetom_z;
 float MAG_Heading;
+//Victor: added displacement variables
+float x_dis;
+float y_dis;
+float z_dis;
 
+//Victor: added displacement vector
+float Dis_Vector[3]= {0,0,0};//Store the displacement in a vector
 float Accel_Vector[3]= {0,0,0}; //Store the acceleration in a vector
 float Gyro_Vector[3]= {0,0,0};//Store the gyros turn rate in a vector
 float Omega_Vector[3]= {0,0,0}; //Corrected Gyro_Vector data
