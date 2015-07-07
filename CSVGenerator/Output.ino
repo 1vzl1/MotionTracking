@@ -84,6 +84,17 @@ void printdata(void)
       
 }
 
+void printDataToFile() {
+     Serial.print("VALUE:");
+      Serial.print(timeCounter);
+      Serial.print(",");
+      Serial.print(ToDeg(roll));
+      Serial.print(",");
+      Serial.print(ToDeg(pitch));
+      Serial.print(",");
+      Serial.println(ToDeg(yaw));
+}
+
 long convert_to_dec(float x)
 {
   return x*10000000;
