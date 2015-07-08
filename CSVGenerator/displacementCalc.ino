@@ -17,12 +17,12 @@ void displacementCalc()
     dis_y = 0;
     dis_z = 0;
     zeroCounter++;
-  }
-  else if (zeroCounter==10)
-  {
-    Vel_Vector[0]=0;
-    Vel_Vector[1]=0;
-    Vel_Vector[2]=0;
+    if (zeroCounter>10)
+    {
+      Vel_Vector[0]=0;
+      Vel_Vector[1]=0;
+      Vel_Vector[2]=0;
+    }
   }
   else
   {

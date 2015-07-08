@@ -237,7 +237,8 @@ void loop() //Main Loop
     Euler_angles();
     // ***
     time = timeCounter*0.02;
-    printDataToFile();
+    //printDataToFile();
+    oneAxisPrint();
     timeCounter++;
   }
    

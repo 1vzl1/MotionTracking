@@ -109,6 +109,19 @@ void printDataToFile() {
       Serial.println(Dis_Vector[2]);
 }
 
+void oneAxisPrint() {
+  if (Dis_Vector[2]!=0)
+  {
+    Serial.print(time);
+    Serial.print(",");
+    Serial.print(Accel_Vector[2]);
+    Serial.print(",");
+    Serial.print(Vel_Vector[2]);
+    Serial.print(",");
+    Serial.println(Dis_Vector[2]);
+  }
+}
+
 long convert_to_dec(float x)
 {
   return x*10000000;
