@@ -238,7 +238,8 @@ void loop() //Main Loop
     // ***
     time = timeCounter*0.02;
     //printDataToFile();
-    oneAxisPrint();
+   // oneAxisPrint();
+   printToFormat();
     timeCounter++;
   }
    

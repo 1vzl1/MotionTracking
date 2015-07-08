@@ -122,6 +122,31 @@ void oneAxisPrint() {
   }
 }
 
+void printToFormat() {
+  //Format is:
+  //Packet number, Gyroscope x, Gyroscope y, Gyroscope z, Accelerometer x, Accelerometer y, Accelerometer z, Magnetometer x, Mangetometer y, Magnetometer z
+  Serial.print("VALUE:");//this line is used to seperate relevent data from non-relevent data in CSV generator. Processing removes this string from the generated file
+  Serial.print(timeCounter);
+  Serial.print(",");
+  Serial.print(Gyro_Vector[0]);
+  Serial.print(",");
+  Serial.print(Gyro_Vector[1]);
+  Serial.print(",");
+  Serial.print(Gyro_Vector[2]);
+  Serial.print(",");
+  Serial.print(Accel_Vector[0]);
+  Serial.print(",");
+  Serial.print(Accel_Vector[1]);
+  Serial.print(",");
+  Serial.print(Accel_Vector[2]-256);//-256 to account for gravity
+  Serial.print(",");
+  Serial.print(c_magnetom_x);
+  Serial.print(",");
+  Serial.print(c_magnetom_y);
+  Serial.print(",");
+  Serial.println(c_magnetom_z);
+}
+
 long convert_to_dec(float x)
 {
   return x*10000000;
